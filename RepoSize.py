@@ -28,3 +28,4 @@ while True:
     print size+';'+scm+';'+has_issues+';'+created+';'+updated+';'+name
   if 'next' not in jsonDict: break
   else: url = jsonDict['next']
+
