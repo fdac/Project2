@@ -28,9 +28,10 @@ these questions further.  In particular, they provided $1700 in AWS
 credits and sufficient storage space for you to complete this
 investigation.
 
-Project2a will focus on retrieving data necessary to answer these
-questions, Project2b on storing that data, and Project2c on
-analyzing it and providing answers to investors.
+Project2a will focus on retrieving raw data necessary to answer these
+questions, Project2b on extracting data from retrieved VCS and storing it in 
+a way to facilitate the subsequent analysis, and Project2c on
+analyzing it and on providing answers to investors.
 
 The investors are a bit impatient and want a brief technical readout
 of the data retrieval progress in one week. They would like to know
@@ -39,7 +40,7 @@ know how many MB of repository data is retrieved per $ of provided
 funding, how long it will take to get all the data, and what
 approaches will be used to analyze it.
 
-Instructions for Project1a 
+Instructions for Project2a 
 --------------------------
 To speed up the process, the tasks will be distributed among newly
 formed six teams.  Each team will find a list of repositories that
@@ -53,6 +54,7 @@ Each team will use a different type of AWS machine:
 * Team1: t2.micro
 * Team2: t2.medium
 * Team3: m3.2xlarge
+* Team5: any type
 * Team5: r3.2xlarge
 * Team6: i2.xlarge
 
