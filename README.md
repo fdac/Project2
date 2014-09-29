@@ -18,10 +18,38 @@ In particular, they provided $1700 in AWS credits and sufficient storage space f
 Project2a will focus on retrieving and storing data that would enable answering these (and related) questions 
 in Project2b. 
 
-The investors are a bit impatient and want a very brief technical readout of how the data retrieval is going in one week. They would like to know if the mone is used wisely, in particular, they would like to know how many MB of repository data is retrieved per $ of the provided funding, how long it will take to get all the data, 
+The investors are a bit impatient and want a brief technical readout of how the data retrieval is going in one week. They would like to know if the mone is used wisely, in particular, they would like to know how many MB of repository data is retrieved per $ of the provided funding, how long it will take to get all the data, 
 and what approaches will be used to analyze it.
 
+To speed up the process, the tasks will be distributed among newly formed seven teams.
+Each team will find a list of repositories that they need to retrieve in 
+file 'divided' (columns team  number, type of vcs, and the 
+name of the repository are semicolon separated).
 
-To speed up the process, the tasks are distributed among newly formed seven teams.
-Each team will find a list of repositories that they need to retrieve and will be given instructions 
-on what approaches to use. 
+[Instructions on servers/VMs to use](https://github.com/fdac/aws)
+
+Each team will use a different type of AWS machine:
+(the various instances are described [here](http://aws.amazon.com/ec2/pricing)
+* Team1: t2.micro
+* Team2: t2.medium
+* Team3: m3.2xlarge
+* Team5: r3.2xlarge
+* Team6: i2.xlarge
+
+To clone hg repositories please use
+```
+hg clone -U 
+```
+
+To clone git repositories please use
+```
+git clone --mirror
+```
+
+Once the disk of the AWS VM is filled, please rsync to 
+the home directory of the DA VM via
+```
+rsync -a  
+```
+
+
