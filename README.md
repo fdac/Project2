@@ -49,6 +49,7 @@ and "repository" are semicolon separated).
 
 [Instructions on servers/VMs to use](https://github.com/fdac/aws)
 
+
 Each team will use a different type of AWS machine:
 (the various instances are described [here](http://aws.amazon.com/ec2/pricing)
 * Team1: t2.micro
@@ -58,6 +59,9 @@ Each team will use a different type of AWS machine:
 * Team5: r3.2xlarge
 * Team6: i2.xlarge
 
+For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
+ebs storage. The largest repository on BB is 22Gb, so
+you should use at least that much storage for your instance.
 
 To clone hg repositories (e.g., ape_hand/new) please use
 ```
@@ -72,7 +76,31 @@ git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
 Once the disk of the AWS VM is filled, please rsync to 
 your home directory of the DA VM via
 ```
-rsync -ae 'ssh -p 2200' yournetid@da2.eecs.utk.edu:
+rsync -ae 'ssh -p 2200' ListofRepoFolders yournetid@da2.eecs.utk.edu:
+```
+
+Here is an example script (you may want to modify
+the amount of disk left to exceed the size of the
+repo about to be cloned):
+```
+TEAM=1
+grep ^$TEAM';hg' divided > todohg
+grep ^$TEAM';git' divided > todogit
+mkdir hg
+cd hg
+cat ../todohg | while read repo
+do path=$(echo $repo | sed 's"/"_")
+   hg clone -H https://bitbucket.org/$repo $path
+   spcleft=$(df -k . | tail -1 | awk '{ print $2}')
+   if [[ $spcleft -lt 1000000 ]]
+   then
+      #rsync and remove what has been copied
+      rsync -ae 'ssh -p2200' * YourNetId@da2.eecs.utk.edu:hg/
+      ls | while read dir; do find $dir --delete; done
+   fi
+done
+cd ../
+#similar for git
 ```
 
 Instructions for Project2bc
