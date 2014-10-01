@@ -103,7 +103,7 @@ cd ../
 #similar for git
 ```
 
-Alternatively, may consider writing a more sophisticated python
+Alternatively, you may consider writing a more sophisticated python
 script with timing of individual operations, e.g., something
 along the following lines:
 ```
@@ -123,7 +123,7 @@ nused = 0
 f = open ('divided')
 for l in f: 
   ar = l .split(';')
-  t = ar [0]
+  t = int (ar [0])
   n = ar[2]
   p = re. sub('/', '_', n)
   s = n2s [ n ]
