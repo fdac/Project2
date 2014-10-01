@@ -136,13 +136,13 @@ for l in f:
 	   now0 = time .time()
 	   print str (nused) + ' cloned in ' + str (now0 - now) 
 	   now = time .time()
-	   envoy ('rsync -ae "ssh -p2200" * YourNetId@da2.eecs.utk.edu:hg')
-       envoy ('ls | while read dir; do find $dir --delete; done')
+	   envoy .run ('rsync -ae "ssh -p2200" * YourNetId@da2.eecs.utk.edu:hg')
+       envoy .run ('ls | while read dir; do find $dir --delete; done')
 	   now = time .time()
 	   print str (nused) + ' synced in ' + str (now - now0) 
 	   nused = 0
 	nused += s
-	envoy (cmd)
+	envoy .run (cmd)
 f .close()
 ```
 
