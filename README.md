@@ -91,7 +91,7 @@ cd hg
 cat ../todohg | while read repo
 do path=$(echo $repo | sed 's"/"_")
    hg clone -H https://bitbucket.org/$repo $path
-   spcleft=$(df -k . | tail -1 | awk '{ print $2}')
+   spcleft=$(df -k . | tail -1 | awk '{ print $4 }')
    if [[ $spcleft -lt 1000000 ]]
    then
       #rsync and remove what has been copied
@@ -102,6 +102,51 @@ done
 cd ../
 #similar for git
 ```
+
+Alternatively, may consider writing a more sophisticated python
+script with timing of individual operations, e.g., something
+along the following lines:
+```
+import envoy, re, time
+n2s = {}
+f = open ('RepoSize.csv')
+for l in f: 
+  ar = l .split(';')
+  vcs = ar [1]
+  s = int (ar [0])
+  n2s [ar [5]] = s
+
+start = time .time()
+now = start
+nmax = DiskCapacity
+nused = 0
+f = open ('divided')
+for l in f: 
+  ar = l .split(';')
+  t = ar [0]
+  n = ar[2]
+  p = re. sub('/', '_', n)
+  s = n2s [ n ]
+  vcs = ar [1]
+  if (t == myTeam):
+    cmd = 'git clone --mirror https://bitbucket.org/' + n + ' ' + p
+    if vcs == 'hg':
+	   cmd = 'hg clone -U https://bitbucket.org/' + n + ' ' + p
+    if (nused + s > DiskCapacity):
+	   now0 = time .time()
+	   print str (nused) + ' cloned in ' + str (now0 - now) 
+	   now = time .time()
+	   envoy ('rsync -ae "ssh -p2200" * YourNetId@da2.eecs.utk.edu:hg')
+       envoy ('ls | while read dir; do find $dir --delete; done')
+	   now = time .time()
+	   print str (nused) + ' synced in ' + str (now - now0) 
+	   nused = 0
+	nused += s
+	envoy (cmd)
+f .close()
+```
+
+
 
 Instructions for Project2bc
 ---------------------------
