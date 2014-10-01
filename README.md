@@ -58,20 +58,21 @@ Each team will use a different type of AWS machine:
 * Team5: r3.2xlarge
 * Team6: i2.xlarge
 
-To clone hg repositories please use
+
+To clone hg repositories (e.g., ape_hand/new) please use
 ```
-hg clone -U 
+hg clone -U https://bitbucket.org/ape_hand/new ape_hand_new
 ```
 
-To clone git repositories please use
+To clone git repositories (e.g., opensymphony/xwork) please use
 ```
-git clone --mirror
+git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
 ```
 
 Once the disk of the AWS VM is filled, please rsync to 
-the home directory of the DA VM via
+your home directory of the DA VM via
 ```
-rsync -a
+rsync -ae 'ssh -p 2200' yournetid@da2.eecs.utk.edu:
 ```
 
 Instructions for Project2bc
@@ -81,14 +82,14 @@ forthcoming...
 
 References
 ----------
-1. [Large-scale code reuse in open source software](https://github.com/fdac/Project2/floss.pdf)
+1. [Large-scale code reuse in open source software](https://github.com/fdac/Project2/blob/master/floss.pdf)
    In ICSE'07 Intl. Workshop on Emerging Trends in FLOSS Research
    and Development, Minneapolis, Minnesota, May 21 2007.
-1. [Amassing and indexing a large sample of version control systems: towards the census of public source code history](https://github.com/fdac/Project2/MSR2009_0113_mockus_audris.pdf)
+1. [Amassing and indexing a large sample of version control systems: towards the census of public source code history](https://github.com/fdac/Project2/blob/master/MSR2009_0113_mockus_audris.pdf)
    In 6th IEEE Working Conference on Mining Software Repositories,
    May 16-17 2009
-1. [Lean GHTorrent: GitHub Data on Demand](https://github.com/fdac/Project2/p384-gousios.pdf)
+1. [Lean GHTorrent: GitHub Data on Demand](https://github.com/fdac/Project2/blob/master/p384-gousios.pdf)
    In Proceedings of the 11th Working Conference on Mining Software
    Repositories, MSR 2014 (384–387)
-1. [The relationship between folder use and the number of forks: A case study on github repositories](https://github.com/fdac/Project2/folder-short.pdf). In
+1. [The relationship between folder use and the number of forks: A case study on github repositories](https://github.com/fdac/Project2/blob/master/folder-short.pdf). In
    ESEM, Torino, Italy, September 2014.
