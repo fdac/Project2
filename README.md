@@ -106,7 +106,7 @@ repo about to be cloned as is done in the next example:
    then
       #rsync and remove what has been copied
       rsync -ae 'ssh -p2200' * YourNetId@da2.eecs.utk.edu:hg/
-      ls | while read dir; do find $dir --delete; done
+      ls | while read dir; do [[ -d $dir ]] && find $dir -delete; done
    fi
  done
  cd ../
@@ -146,7 +146,7 @@ for l in f:
 	   print str (nused) + ' cloned in ' + str (now0 - now) 
 	   now = time .time()
 	   envoy .run ('rsync -ae "ssh -p2200" * YourNetId@da2.eecs.utk.edu:hg')
-       envoy .run ('ls | while read dir; do find $dir --delete; done')
+       envoy .run ('ls | while read dir; do [[ -d $dir ]] && find $dir -delete; done')
 	   now = time .time()
 	   print str (nused) + ' synced in ' + str (now - now0) 
 	   nused = 0
