@@ -58,6 +58,7 @@ ssh -p2200 yournetid@da2.eecs.utk.edu
 ssh -p2204 yournetid@da2.eecs.utk.edu
 ```
  Your home directory will be the same across these five da2 VMs.
+
 1. To clone the repos please use AWS VMs of the type specified for your team:
  (the various instances are described [here](http://aws.amazon.com/ec2/pricing))
  * Team1: t2.micro
@@ -69,6 +70,7 @@ ssh -p2204 yournetid@da2.eecs.utk.edu
  * note: For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
    ebs storage. The largest repository on BB is 22Gb, so
    you should use at least that much storage for your instance.
+
 1. To clone hg repositories (e.g., ape_hand/new) please use
 ```
 hg clone -U https://bitbucket.org/ape_hand/new ape_hand_new
