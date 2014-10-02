@@ -57,7 +57,7 @@ ssh -p2200 yournetid@da2.eecs.utk.edu
 ...
 ssh -p2204 yournetid@da2.eecs.utk.edu
 ```
-Your home directory will be the same across these five da2 VMs.
+ Your home directory will be the same across these five da2 VMs.
 1. To clone the repos please use AWS VMs of the type specified for your team:
  (the various instances are described [here](http://aws.amazon.com/ec2/pricing))
  * Team1: t2.micro
