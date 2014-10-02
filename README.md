@@ -69,23 +69,19 @@ Your home directory will be the same across these five da2 VMs.
  * note: For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
    ebs storage. The largest repository on BB is 22Gb, so
    you should use at least that much storage for your instance.
-
 1. To clone hg repositories (e.g., ape_hand/new) please use
 ```
 hg clone -U https://bitbucket.org/ape_hand/new ape_hand_new
 ```
-
 1. To clone git repositories (e.g., opensymphony/xwork) please use
 ```
 git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
 ```
-
 1. Once the disk of the AWS VM is filled, please rsync to 
 your home directory of the da2 VM via
 ```
 rsync -ae 'ssh -p 2200' ListofRepoFolders yournetid@da2.eecs.utk.edu:
 ```
-
 1. Here is an example script: you may want to modify
 the amount of disk left (1000000) to be just above the size of the
 repo about to be cloned as is done in the next example:
@@ -109,7 +105,6 @@ done
 cd ../
 #similar for git
 ```
-
 1. Alternatively, you may consider writing a more sophisticated python
 script with timing of individual operations, e.g., something
 along the following lines:
