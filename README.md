@@ -69,31 +69,30 @@ Your home directory will be the same across these five da2 VMs.
  * note: For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
    ebs storage. The largest repository on BB is 22Gb, so
    you should use at least that much storage for your instance.
-
 1. To clone hg repositories (e.g., ape_hand/new) please use
- ```
- hg clone -U https://bitbucket.org/ape_hand/new ape_hand_new
- ```
+```
+hg clone -U https://bitbucket.org/ape_hand/new ape_hand_new
+```
 1. To clone git repositories (e.g., opensymphony/xwork) please use
- ```
- git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
- ```
+```
+git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
+```
 1. Once the disk of the AWS VM is filled, please rsync to 
- your home directory of the da2 VM via
- ```
- rsync -ae 'ssh -p 2200' ListofRepoFolders yournetid@da2.eecs.utk.edu:
- ```
+your home directory of the da2 VM via
+```
+rsync -ae 'ssh -p 2200' ListofRepoFolders yournetid@da2.eecs.utk.edu:
+```
 1. Here is an example script: you may want to modify
- the amount of disk left (1000000) to be just above the size of the
- repo about to be cloned as is done in the next example:
- ```
- TEAM=1
- grep ^$TEAM';hg' divided > todohg
- grep ^$TEAM';git' divided > todogit
- mkdir hg
- cd hg
- cat ../todohg | while read repo
- do path=$(echo $repo | sed 's"/"_")
+the amount of disk left (1000000) to be just above the size of the
+repo about to be cloned as is done in the next example:
+```
+TEAM=1
+grep ^$TEAM';hg' divided > todohg
+grep ^$TEAM';git' divided > todogit
+mkdir hg
+cd hg
+cat ../todohg | while read repo
+do path=$(echo $repo | sed 's"/"_")
    hg clone -H https://bitbucket.org/$repo $path
    spcleft=$(df -k . | tail -1 | awk '{ print $4 }')
    if [[ $spcleft -lt 1000000 ]]
@@ -102,10 +101,10 @@ Your home directory will be the same across these five da2 VMs.
       rsync -ae 'ssh -p2200' * YourNetId@da2.eecs.utk.edu:hg/
       ls | while read dir; do find $dir --delete; done
    fi
- done
- cd ../
- #similar for git
- ```
+done
+cd ../
+#similar for git
+```
 1. Alternatively, you may consider writing a more sophisticated python
 script with timing of individual operations, e.g., something
 along the following lines:
