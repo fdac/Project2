@@ -49,39 +49,46 @@ and "repository" are semicolon separated).
 
 [Instructions on servers/VMs to use](https://github.com/fdac/aws)
 
+Briefly:
+1. To store repositories please use any one of five da2 vms 
+```
+ssh -p2200 yournetid@da2.eecs.utk.edu
+...
+ssh -p2204 yournetid@da2.eecs.utk.edu
+```
+Your home directory will be the same across these five da2 VMs.
 
-Each team will use a different type of AWS machine:
-(the various instances are described [here](http://aws.amazon.com/ec2/pricing)
-* Team1: t2.micro
-* Team2: t2.medium
-* Team3: m3.2xlarge
-* Team5: any type
-* Team5: r3.2xlarge
-* Team6: i2.xlarge
+1. To clone the repos please use AWS VMs of the type specified for your team:
+ (the various instances are described [here](http://aws.amazon.com/ec2/pricing)
+ * Team1: t2.micro
+ * Team2: t2.medium
+ * Team3: m3.2xlarge
+ * Team5: any type
+ * Team5: r3.2xlarge
+ * Team6: i2.xlarge
+ * note: For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
+   ebs storage. The largest repository on BB is 22Gb, so
+   you should use at least that much storage for your instance.
 
-For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
-ebs storage. The largest repository on BB is 22Gb, so
-you should use at least that much storage for your instance.
-
-To clone hg repositories (e.g., ape_hand/new) please use
+1. To clone hg repositories (e.g., ape_hand/new) please use
 ```
 hg clone -U https://bitbucket.org/ape_hand/new ape_hand_new
 ```
 
-To clone git repositories (e.g., opensymphony/xwork) please use
+1. To clone git repositories (e.g., opensymphony/xwork) please use
 ```
 git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
 ```
 
-Once the disk of the AWS VM is filled, please rsync to 
-your home directory of the DA VM via
+1. Once the disk of the AWS VM is filled, please rsync to 
+your home directory of the da2 VM via
 ```
 rsync -ae 'ssh -p 2200' ListofRepoFolders yournetid@da2.eecs.utk.edu:
 ```
 
-Here is an example script (you may want to modify
-the amount of disk left to exceed the size of the
-repo about to be cloned):
+1. Here is an example script: you may want to modify
+the amount of disk left (1000000) to be just above the size of the
+repo about to be cloned as is done in the next example:
 ```
 TEAM=1
 grep ^$TEAM';hg' divided > todohg
@@ -103,7 +110,7 @@ cd ../
 #similar for git
 ```
 
-Alternatively, you may consider writing a more sophisticated python
+1. Alternatively, you may consider writing a more sophisticated python
 script with timing of individual operations, e.g., something
 along the following lines:
 ```
@@ -145,7 +152,8 @@ for l in f:
 	envoy .run (cmd)
 f .close()
 ```
-
+It may be worth-while to count time for git repos separately from
+the time for hg repos: the cloning time may differ a lot.
 
 
 Instructions for Project2bc
