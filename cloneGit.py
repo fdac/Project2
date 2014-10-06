@@ -26,9 +26,9 @@ for l in f:
   s = n2s [ n ]
   vcs = ar [1]
   if (t == 1):
-    cmdl = 'git clone --mirror git://bitbucket.org/' + n + ' ' + p
+    cmdl = 'git clone --mirror https://bitbucket.org/' + n + ' ' + p
     if vcs == 'hg':
-       next
+       continue 
     if (nused + s > DiskCapacity):
        now0 = time .time()
        print str (nused) + ' cloned in ' + str (now0 - now) 

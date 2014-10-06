@@ -81,7 +81,7 @@ A brief version:
 1. To clone git repositories (e.g., opensymphony/xwork) please use
 
  ```
- git clone --mirror git://bitbucket.org/opensymphony/xwork opensymphony_xwork
+ git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
  ```
 1. Once the disk of the AWS VM is filled, please rsync to 
 your home directory of the da2 VM via

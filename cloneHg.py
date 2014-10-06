@@ -29,7 +29,7 @@ for l in f:
   if (t == 1):
     cmdl = 'hg clone -U https://bitbucket.org/' + n + ' ' + p
     if vcs == 'git':
-       next
+       continue
     if (nused + s > DiskCapacity):
        now0 = time .time()
        print str (nused) + ' cloned in ' + str (now0 - now) 
