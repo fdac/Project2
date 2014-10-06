@@ -49,6 +49,7 @@ and "repository" are semicolon separated).
 
 [Instructions on servers/VMs to use](https://github.com/fdac/aws)
 
+
 A brief version:
 
 1. To store repositories please use any one of five da2 vms 
@@ -80,7 +81,7 @@ A brief version:
 1. To clone git repositories (e.g., opensymphony/xwork) please use
 
  ```
- git clone --mirror https://bitbucket.org/opensymphony/xwork opensymphony_xwork
+ git clone --mirror git://bitbucket.org/opensymphony/xwork opensymphony_xwork
  ```
 1. Once the disk of the AWS VM is filled, please rsync to 
 your home directory of the da2 VM via
@@ -88,6 +89,22 @@ your home directory of the da2 VM via
  ```
  rsync -ae 'ssh -p 2200' ListofRepoFolders yournetid@da2.eecs.utk.edu:
  ```
+Note: to use key-based authentication for paswordless login ssh uses
+a key pair: a private and a public key. You can use the 'micro' key on
+fdac/aws or create a different one. If you ssh from VM A to VM B,
+ you need the secret key on A (as ~/.ssh/id_rsa to avoid adding -i
+ pathToKey option to ssh) and the public key on B as a
+one line in  ~/.ssh/authorized_keys. Note that authorized_keys can have
+ multiple lines for multiple public keys). If you need access from B to
+ A, then also put the secret key as B's ~/.ssh/id_rsa and the public key as
+ a line in A's ~/.ssh/authorized_keys. Please make sure that ~/.ssh
+ and ~/.ssh/id_rsa are *not* readable or writable by anyone
+ else. E.g., run:
+ ```
+ chmod -R 600 ~/.ssh
+ ```
+ on both A an B
+
 1. Here is an example script: you may want to modify
 the amount of disk left (1000000) to be just above the size of the
 repo about to be cloned as is done in the next example:
@@ -138,7 +155,7 @@ for l in f:
   s = n2s [ n ]
   vcs = ar [1]
   if (t == myTeam):
-    cmd = 'git clone --mirror https://bitbucket.org/' + n + ' ' + p
+    cmd = 'git clone --mirror git://bitbucket.org/' + n + ' ' + p
     if vcs == 'hg':
 	   cmd = 'hg clone -U https://bitbucket.org/' + n + ' ' + p
     if (nused + s > DiskCapacity):
@@ -156,6 +173,8 @@ f .close()
 ```
 It may be worth-while to count time for git repos separately from
 the time for hg repos: the cloning time may differ a lot.
+Here are python files for cloning [hg](https://github.com/fdac/Project2/blob/master/cloneHg.py) and [git](https://github.com/fdac/Project2/blob/master/cloneGit.py) that appear to work.
+
 
 
 Instructions for Project2bc
