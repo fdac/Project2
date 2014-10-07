@@ -4,7 +4,6 @@ import envoy, re, time
 DiskCapacity = 25000000*1000
 netid='xxxxx'
 
-
 n2s = {}
 f = open ('RepoSize.csv')
 for l in f: 
@@ -29,7 +28,7 @@ for l in f:
   if (t == 1):
     cmdl = 'hg clone -U https://bitbucket.org/' + n + ' ' + p
     if vcs == 'git':
-       continue
+       continue 
     if (nused + s > DiskCapacity):
        now0 = time .time()
        print str (nused) + ' cloned in ' + str (now0 - now) 
@@ -45,9 +44,10 @@ for l in f:
        print r1 .std_err 
        nused = 0
        toCopy = []
-    nused += s
-    toCopy .append (p)
     r = envoy .run (cmdl)
     ttt = time .time()
     print str (r.status_code) + ';' + str (nused) + ';' + str (ttt) + ';' + cmdl
+    if (r.status_code == 0):
+       toCopy .append (p)
+       nused += s
 f .close()

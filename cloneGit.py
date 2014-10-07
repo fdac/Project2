@@ -34,7 +34,7 @@ for l in f:
        print str (nused) + ' cloned in ' + str (now0 - now) 
        now = time .time()
        rsync = " ".join (toCopy)
-       r = envoy .run ('rsync -ae "ssh -p2200" ' + rsync + ' ' + netid + '@da2.eecs.utk.edu:hg')
+       r = envoy .run ('rsync -ae "ssh -p2200" ' + rsync + ' ' + netid + '@da2.eecs.utk.edu:git')
        r1 = envoy .run ('find ' + rsync + ' -delete')
        now = time .time()
        print str (nused) + ' synced in ' + str (now - now0)

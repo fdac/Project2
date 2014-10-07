@@ -6,18 +6,45 @@ Intermediate Results
 
 ###Difficulties Encountered:
 1. Various ssh key authentication issues, including, for rsync: see Step 5 below.
-1. Some repos require password while cloning. It seems that
-   redirecting standard input works. For example, run command
+1. Some repos require password while cloning. Redirecting standard
+   input does not appear to work. The following script (put it in
+   file 'run' and run via 'expect run > ~/statsHg 2> ~/statsHg.err'. Install 'expect' command via
+   "sudo apt-get install expect")
 
  ```
- python [cloneHg.py](https://github.com/fdac/Project2/blob/master/cloneHg.py) < /dev/null > stats 2> stats.err
+ #!/usr/bin/expect
+ set timout -1
+ spawn python cloneHg.py
+ expect {           
+    "Username for 'https://bitbucket.org':" {
+        send "\r"
+    } "Password for 'https://bitbucket.org':" {
+        send "\r"
+        set timeout -1
+    } timeout {
+        exit
+    } eof {
+        exit
+    }
+ }
  ```
+ For example
+ ```
+ git clone --mirror https://bitbucket.org/szlorens/degramobile szlorens_degramobile
+ ```
+ asks for password.
+ 
 1. Issues with adapting python/bash scripts. Please take a look at
   [cloneHg.py](https://github.com/fdac/Project2/blob/master/cloneHg.py)
   and
   [cloneGit.py](https://github.com/fdac/Project2/blob/master/cloneGit.py)
   Both seem to work.
-  
+1. No module envoy:
+
+ ```
+ sudo pip install envoy
+ ```
+
 ### Results so far
 ```
 Team | AWS VM     | Time | Cost/Hr | Gb retrived| Comments
@@ -28,7 +55,7 @@ T3   |m3.2xlarge  |  39  |  0.56   | 215        |
 T4   |c3.2xlargex3|      | 0.42*3  |            |
 T5   |r3.2xlarge  |  39  | 0.7     |            |
 T6   | i2.xlarge  |  24  | 0.85    | 130 (git)  |
-i    | m3.large   |      | .14     |            |
+i    | m3.large   |      | 0.14    |            |
 ```
 Please email me corrected numbers, I copied these from the
 whiteboard.
