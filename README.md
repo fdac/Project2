@@ -17,10 +17,14 @@ Intermediate Results
  set timout -1
  spawn python cloneHg.py
  expect {           
-    -re { "bitbucket.org" } {
+    "Username for 'https://bitbucket.org':" {
         send "\r"
         exp_continue
     } 
+    "Password for 'https://bitbucket.org':" {
+        send "\r"
+        exp_continue
+    }
  }
  ```
  For example
