@@ -19,7 +19,7 @@ Intermediate Results
   Both seem to work.
   
 ### Results so far
-
+```
 Team | AWS VM     | Time | Cost/Hr | Gb retrived| Comments
 -----+------------+------+---------+------------+---------
 T1   |t1.micro    |  5h  |  .013   | 12         |
@@ -28,7 +28,8 @@ T3   |m3.2xlarge  |  39  |  0.56   | 215        |
 T4   |c3.2xlargex3|      | 0.42*3  |            |
 T5   |r3.2xlarge  |  39  | 0.7     |            |
 T6   | i2.xlarge  |  24  | 0.85    | 130 (git)  |
-
+i    | m3.large   |      | .14     |            |
+```
 Please email me corrected numbers, I copied these from the
 whiteboard.
 
