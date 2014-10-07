@@ -1,6 +1,38 @@
 Project2a
 ========
 
+Intermediate Results
+--------------------
+
+###Difficulties Encountered:
+1. Various ssh key authentication issues, including, for rsync: see Step 5 below.
+1. Some repos require password while cloning. It seems that
+   redirecting standard input works. For example, run command
+
+ ```
+ python [cloneHg.py](https://github.com/fdac/Project2/blob/master/cloneHg.py) < /dev/null > stats 2> stats.err
+ ```
+1. Issues with adapting python/bash scripts. Please take a look at
+  [cloneHg.py](https://github.com/fdac/Project2/blob/master/cloneHg.py)
+  and
+  [cloneGit.py](https://github.com/fdac/Project2/blob/master/cloneGit.py)
+  Both seem to work.
+  
+### Results so far
+
+Team | AWS VM     | Time | Cost/Hr | Gb retrived| Comments
+-----+------------+------+---------+------------+---------
+T1   |t1.micro    |  5h  |  .013   | 12         |
+T2   | t2.medium  |      |  .052   |            |
+T3   |m3.2xlarge  |  39  |  0.56   | 215        |
+T4   |c3.2xlargex3|      | 0.42*3  |            |
+T5   |r3.2xlarge  |  39  | 0.7     |            |
+T6   | i2.xlarge  |  24  | 0.85    | 130 (git)  |
+
+Please email me corrected numbers, I copied these from the
+whiteboard.
+
+
 Retrieve and store BitBucket VCS
 ----------------------------------
 
@@ -66,7 +98,7 @@ A brief version:
  * Team1: t2.micro
  * Team2: t2.medium
  * Team3: m3.2xlarge
- * Team5: any type
+ * Team4: any type
  * Team5: r3.2xlarge
  * Team6: i2.xlarge
  * note: For instances with no instance storage (t2.micro,t2.medium) it is possible to specify
@@ -103,7 +135,7 @@ one line in  ~/.ssh/authorized_keys. Note that authorized_keys can have
  ```
  chmod -R 600 ~/.ssh
  ```
- on both A an B
+ on both A an B.
 
 1. Here is an example script: you may want to modify
 the amount of disk left (1000000) to be just above the size of the
@@ -155,7 +187,7 @@ for l in f:
   s = n2s [ n ]
   vcs = ar [1]
   if (t == myTeam):
-    cmd = 'git clone --mirror git://bitbucket.org/' + n + ' ' + p
+    cmd = 'git clone --mirror https://bitbucket.org/' + n + ' ' + p
     if vcs == 'hg':
 	   cmd = 'hg clone -U https://bitbucket.org/' + n + ' ' + p
     if (nused + s > DiskCapacity):
