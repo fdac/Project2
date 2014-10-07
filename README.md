@@ -5,7 +5,8 @@ Intermediate Results
 --------------------
 
 ###Difficulties Encountered:
-1. Various ssh key authentication issues, including, for rsync: see Step 5 below.
+1. Various ssh key authentication issues, including, for rsync: see
+   Step 5 in "Instructions for Project2a" below.
 1. Some repos require password while cloning. Redirecting standard
    input does not appear to work. The following script (put it in
    file 'run' and run via 'expect run > ~/statsHg 2> ~/statsHg.err'. Install 'expect' command via
@@ -26,7 +27,8 @@ Intermediate Results
  ```
  git clone --mirror https://bitbucket.org/szlorens/degramobile szlorens_degramobile
  ```
- asks for password.
+ asks for password. Alternatively, you can use command timeout which kills a process that takes
+        longer than specified time.
  
 1. Issues with adapting python/bash scripts. Please take a look at
   [cloneHg.py](https://github.com/fdac/Project2/blob/master/cloneHg.py)
@@ -36,20 +38,31 @@ Intermediate Results
 1. No module envoy:
 
  ```
+ sudo apt-get install python-pip
  sudo pip install envoy
  ```
 
-### Results so far
+1. How to run the script unattended.
+ If you exit the shell frow where you started a script the script
+ gets hangup signal and, unless it ignores it, is terminated. There
+ are several ways around that.
+ 1. Run 'nohup ./ScriptName'
+ 2. If it is already running
+ see [here](http://stackoverflow.com/questions/625409/how-do-i-put-an-already-running-process-under-nohup)
+ 3. Use [screen](http://stackoverflow.com/questions/3202111/set-screen-names-with-gnu-screen)
+  
+### Data 
 ```
 Team | AWS VM     | Time | Cost/Hr | Gb retrived| Comments
 -----+------------+------+---------+------------+---------
 T1   |t1.micro    |  5h  |  .013   | 12         |
-T2   | t2.medium  |      |  .052   |            |
+T2   |t2.medium   |      |  .052   |            |
 T3   |m3.2xlarge  |  39  |  0.56   | 215        |
 T4   |c3.2xlargex3|      | 0.42*3  |            |
 T5   |r3.2xlarge  |  39  | 0.7     |            |
-T6   | i2.xlarge  |  24  | 0.85    | 130 (git)  |
-i    | m3.large   |      | 0.14    |            |
+T6   |i2.xlarge   |  24  | 0.85    | 130 (git)  |
+hg   |m3.large    |  3.6 | 0.14    | 24.94      |
+git  |m3.large    |      | 0.14    |            |
 ```
 Please email me corrected numbers, I copied these from the
 whiteboard.
