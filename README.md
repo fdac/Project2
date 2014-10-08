@@ -14,7 +14,7 @@ Intermediate Results
 
  ```
  #!/usr/bin/expect
- set timout -1
+ set timeout -1
  spawn python cloneHg.py
  expect {           
     "Username for 'https://bitbucket.org':" {
