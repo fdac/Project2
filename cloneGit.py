@@ -1,4 +1,4 @@
-import envoy, re, time
+import sys, envoy, re, time
 
 #Please set these as appropriate for your VM
 DiskCapacity = 25000000*1000
@@ -47,6 +47,7 @@ for l in f:
     r = envoy .run (cmdl)
     ttt = time .time()
     print str (r.status_code) + ';' + str (nused) + ';' + str (ttt) + ';' + cmdl
+    sys.stdout.flush()
     if (r.status_code == 0):
        toCopy .append (p)
        nused += s

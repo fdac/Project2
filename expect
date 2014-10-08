@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+set timeout -1
+spawn python cloneHg.py 
+expect {           
+    "Username for 'https://bitbucket.org':" {
+        send "\r"
+        exp_continue
+    } 
+    "Password for 'https://bitbucket.org':" {
+        send "\r"
+        exp_continue
+    }
+}

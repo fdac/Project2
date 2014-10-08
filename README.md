@@ -62,7 +62,7 @@ Team | AWS VM     | Time | Cost/Hr | Gb retrived| Comments
 T1   |t1.micro    |  5h  |  .013   | 12         |
 T2   |t2.medium   |      |  .052   |            |
 T3   |m3.2xlarge  |  39  |  0.56   | 215        |
-T4   |c3.2xlargex3|      | 0.42*3  |            |
+T4   |c3.2xlargex3|  1   | 0.42*3  | 183        |3 instances and a total of 24 processes (8 per instance or 1 per core)
 T5   |r3.2xlarge  |  39  | 0.7     |            |
 T6   |i2.xlarge   |  24  | 0.85    | 130 (git)  |
 hg   |m3.large    |  3.6 | 0.14    | 24.94      |
