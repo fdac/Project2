@@ -7,6 +7,7 @@ two questions:
 * How accurate is the language specification in the project
    description?
 * How much actual source code each repository has?
+
 To answer them we need to get files in each repository, for example,
 for repo XXXXX:
 ```
@@ -27,35 +28,37 @@ them could also be a challenging final project.
 
 For  Project2b, however, we need to practice the use of MongoDB...
 
-MongoDB is a nosql database thats primarily useful for storing and
+MongoDB is a nosql database thats primarily useful for storing
 json strings. 
 
-A connection to the server (da0.eecs.utk.edu) provides you with an
+A connection to the MongoDB server (da0.eecs.utk.edu) provides you with an
 option to use three databases: gutenberg, bitbucket, and test (github).
 
 Within each database there are one or more collections (tables) with
-data. In particular, database bitbucket has a populated collection
+data. In particular, database 'bitbucket' has fully populated collection
 'repos' that contains information retrieved by the following requests:
 ```
 https://api.bitbucket.org/2.0/repositories/XXX/XXX
 ```
 
 Other collections: forks, watchers, and commits are not fully
-populated at present. Your team will need to populate that for the
+populated at present. Your team will need to populate them for the
 projects your team is responsible for.
-The script that populates the collection is gatherForks.py
+An example script that populates the collection is gatherForks.py.
+Please replace the database iterator in it with a reader from file
+as in the cloning tasks.
 
 Some examples of extracting data from MongoDB are given in
 PlayWithMongo.ipynb.
 
-For Project 2b, write and start scripts to populate data for 
+For Project 2b, we will need to write and start scripts to populate data for 
 the following collections in database bitbucket:
-commits, forks, watchers, and pullrequests.
+* commits, forks, watchers, and pullrequests.
 
 Instructions for Project2c 
 --------------------------
 We will focus on identifying likely-to-be-popular-in-the-future
-projects and, in order to get some ideas how to measure that 
+projects and, in order to get some ideas on how to measure that 
 please read the following opinion pieces:
 * [How to join a project](https://opensource.com/business/14/9/jump-into-open-source-project)
 * [Ways to contribute](http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/)
@@ -135,7 +138,7 @@ setup, etc.
  ```
 
 1. How to run the script unattended.
- If you exit the shell frow where you started a script the script
+ If you exit the shell from where you started a script the script
  gets hangup signal and, unless it ignores it, is terminated. There
  are several ways around that.
  1. Run 'nohup ./ScriptName'
