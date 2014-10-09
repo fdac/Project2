@@ -58,7 +58,7 @@ the following collections in database bitbucket:
 Instructions for Project2c 
 --------------------------
 We will focus on identifying likely-to-be-popular-in-the-future
-projects and, in order to get some ideas on how to measure that 
+projects and, in order to get some ideas on how to measure that, 
 please read the following opinion pieces:
 * [How to join a project](https://opensource.com/business/14/9/jump-into-open-source-project)
 * [Ways to contribute](http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/)
