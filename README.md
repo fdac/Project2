@@ -95,6 +95,9 @@ whiteboard. Also, if you have not done yet, please send me the architecture:
 e.g., threads to clone, threads to sync and any special disk/network 
 setup, etc.
 
+![Retrieval architecture for Team5](https://github.com/fdac/Project2/T5Arch.png "Architecture")
+
+
 ###Difficulties Encountered:
 1. Various ssh key authentication issues, including, for rsync: see
    Step 5 in "Instructions for Project2a" below.
