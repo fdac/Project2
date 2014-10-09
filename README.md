@@ -95,6 +95,7 @@ whiteboard. Also, if you have not done yet, please send me the architecture:
 e.g., threads to clone, threads to sync and any special disk/network 
 setup, etc.
 
+For example, the data cloning architecture for Team5-2 is below:
 ![Retrieval architecture for Team5](https://github.com/fdac/Project2/blob/master/T5Arch.png "Architecture")
 
 
