@@ -1,3 +1,66 @@
+Instructions for Project2b 
+--------------------------
+
+While the VCS data is being cloned, we could productively work towards
+answering some of the investor questions. Lets consider the first
+two questions: 
+* How accurate is the language specification in the project
+   description?
+* How much actual source code each repository has?
+To answer them we need to get files in each repository, for example,
+for repo XXXXX:
+```
+git --git-dir=XXXXX ls-tree -r --name-only HEAD
+hg log -v --style hg.fmt -R XXXXX | sort -u
+```
+would output a list of all files. The content of hg.fmt is:
+```
+changeset="{files}"
+file="{file}\n"
+```
+To count lines in files, it would be necessary to get the latest
+version of each file (or all version of every file) and count the
+lines. Answering this question could be a challenging final project.
+
+There are other questions investors asked, and answering any one of
+them could also be a challenging final project.
+
+For  Project2b, however, we need to practice the use of MongoDB...
+
+MongoDB is a nosql database thats primarily useful for storing and
+json strings. 
+
+A connection to the server (da0.eecs.utk.edu) provides you with an
+option to use three databases: gutenberg, bitbucket, and test (github).
+
+Within each database there are one or more collections (tables) with
+data. In particular, database bitbucket has a populated collection
+'repos' that contains information retrieved by the following requests:
+```
+https://api.bitbucket.org/2.0/repositories/XXX/XXX
+```
+
+Other collections: forks, watchers, and commits are not fully
+populated at present. Your team will need to populate that for the
+projects your team is responsible for.
+The script that populates the collection is gatherForks.py
+
+Some examples of extracting data from MongoDB are given in
+PlayWithMongo.ipynb.
+
+For Project 2b, write and start scripts to populate data for 
+the following collections in database bitbucket:
+commits, forks, watchers, and pullrequests.
+
+Instructions for Project2c 
+--------------------------
+We will focus on identifying likely-to-be-popular-in-the-future
+projects and, in order to get some ideas how to measure that 
+please read the following opinion pieces:
+* [How to join a project](https://opensource.com/business/14/9/jump-into-open-source-project)
+* [Ways to contribute](http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/)
+
+
 Project2a
 ========
 
@@ -6,23 +69,27 @@ Intermediate Results
 
 ### Data
 
+Please note that the question of architecting cloud applications
+that are effective for data gathering as in Project 2a is a rich
+topic for a final project.
+
 ```
-| Team | AWS VM       | Time | Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                               |
-|------+--------------+------+---------+-------------+------+------+------------------------------------------------------------------------|
-| T1   | t1.micro     |    5 |    .013 |          12 |  185 |    2 |                                                                        |
-| T2   | t2.medium    | 14.2 |    .052 |         103 |  139 |    7 | Clones to 1Tb EBS magnetic volume/no rsync                             |
-| T3   | m3.2xlarge   |   39 |    0.56 |         215 |   10 |    6 |                                                                        |
-| T4   | c3.2xlargex3 |    1 |  0.42*3 |         183 |  145 |  183 | 3 instances and a total of 24 processes (8 per instance or 1 per core) |
-| T5   | r3.2xlarge   |   39 |     0.7 |         288 |   11 |    7 |                                                                        |
-| T6   | i2.xlarge    |   24 |    0.85 |         130 |    6 |    5 |                                                                        |
-| hg   | m3.large     |  3.6 |    0.14 |        24.9 |   49 |    7 | Pure retrieval no rsync                                                |
-| git  | m3.large     |  2.5 |    0.14 |        22.3 |   64 |    9 | Pure retrieval no rsync                                                |
-| hg   | t1.micro     | 4.19 |    .013 |        19.6 |  360 |    5 | Pure retrieval no rsync                                                |
-| git  | t1.micro     | 2.25 |    .013 |        21.7 |  742 |   10 | Pure retrieval no rsync                                                |
+| Team | AWS VM       | Time | Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                                          |
+|------+--------------+------+---------+-------------+------+------+-----------------------------------------------------------------------------------|
+| T1   | t1.micro     |    5 |    .013 |          12 |  185 |    2 |                                                                                   |
+| T2   | t2.medium    | 14.2 |    .052 |         103 |  139 |    7 | Clones to 1Tb EBS magnetic volume/no rsync                                        |
+| T3   | m3.2xlarge   |   39 |    0.56 |         215 |   10 |    6 |                                                                                   |
+| T4   | c3.2xlargex3 |    1 |  0.42*3 |         307 |  244 |  307 | (no rsync) 3 instances and a total of 24 processes (8 per instance or 1 per core) |
+| T5   | r3.2xlarge   |   39 |     0.7 |         288 |   11 |    7 |                                                                                   |
+| T6   | i2.xlarge    |   24 |    0.85 |         130 |    6 |    5 |                                                                                   |
+| hg   | m3.large     |  3.6 |    0.14 |        24.9 |   49 |    7 | Pure retrieval no rsync                                                           |
+| git  | m3.large     |  2.5 |    0.14 |        22.3 |   64 |    9 | Pure retrieval no rsync                                                           |
+| hg   | t1.micro     | 4.19 |    .013 |        19.6 |  360 |    5 | Pure retrieval no rsync                                                           |
+| git  | t1.micro     | 2.25 |    .013 |        21.7 |  742 |   10 | Pure retrieval no rsync                                                           |
 ```
 Please email me corrected numbers, I copied these from the
 whiteboard. Also, if you have not done yet, please send me the architecture:
-e.g., threads to clone, threds to syn, any special disk arraingement/network 
+e.g., threads to clone, threads to sync and any special disk/network 
 setup, etc.
 
 ###Difficulties Encountered:
@@ -251,12 +318,6 @@ f .close()
 It may be worth-while to count time for git repos separately from
 the time for hg repos: the cloning time may differ a lot.
 Here are python files for cloning [hg](https://github.com/fdac/Project2/blob/master/cloneHg.py) and [git](https://github.com/fdac/Project2/blob/master/cloneGit.py) that appear to work.
-
-
-
-Instructions for Project2bc
----------------------------
-forthcoming...
 
 
 References

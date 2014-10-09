@@ -27,8 +27,8 @@ def chunks(l, n):
   if n < 1: n = 1
   return [l[i:i + n] for i in range(0, len(l), n)]
 
-batchSize = 30
-if collName == 'commits': batchSize =  2
+batchSize = 2
+if collName == 'commits': batchSize =  1
 coll1 = db [collName]
 for r in coll .find ({}, { "links" : 1 } ) .batch_size (batchSize):  
   url = r ['links'] [collName] ['href']
@@ -63,12 +63,13 @@ for r in coll .find ({}, { "links" : 1 } ) .batch_size (batchSize):
       print e
       sys .stdout .flush ()
       break
-  if len (v) > 0:    
-    if (size < 16777216/2):
+  if len (v) > 0:
+    # size may be bigger in bson, factor of 2 doesnot always suffice    
+    if (size < 16777216/3):
       coll1.insert ( { 'url': url, 'parent': id, 'values': v } )
     else:
       s = size;
-      n = 2*s/16777216
+      n = 3*s/16777216
       i = 0
       for ch in chunks (v, n):
         coll1.insert ( { 'chunk': i, 'url': url, 'parent': id, 'values': ch } )
