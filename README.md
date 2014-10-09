@@ -95,7 +95,7 @@ whiteboard. Also, if you have not done yet, please send me the architecture:
 e.g., threads to clone, threads to sync and any special disk/network 
 setup, etc.
 
-![Retrieval architecture for Team5](https://github.com/fdac/Project2/T5Arch.png "Architecture")
+![Retrieval architecture for Team5](https://github.com/fdac/Project2/blob/master/T5Arch.png "Architecture")
 
 
 ###Difficulties Encountered:
