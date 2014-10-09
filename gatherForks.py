@@ -16,14 +16,27 @@ collName = 'forks'
 if (len (sys .argv) > 1):
   collName = sys .argv [1]
 
+seen = {'a'}
+f = open (collName + '.done')
+for l in f:
+  u = l .rstrip()
+  print 'done;' + u + ';'
+  seen .add (u)
 
 def chunks(l, n):
   if n < 1: n = 1
   return [l[i:i + n] for i in range(0, len(l), n)]
 
+batchSize = 30
+if collName == 'commits': batchSize =  2
 coll1 = db [collName]
-for r in coll .find ({}, { "links" : 1 } ):  
+for r in coll .find ({}, { "links" : 1 } ) .batch_size (batchSize):  
   url = r ['links'] [collName] ['href']
+  if url in seen:
+    print 'seen;' + url + ';'
+    continue
+  else:
+    print 'not seen;' + url +';'
   id = r ['_id']
   url1 = url + "/?pagelen=100"
   v = []
@@ -49,11 +62,14 @@ for r in coll .find ({}, { "links" : 1 } ):
       print url
       print e
       sys .stdout .flush ()
+      break
   if len (v) > 0:    
     if (size < 16777216/2):
       coll1.insert ( { 'url': url, 'parent': id, 'values': v } )
     else:
       s = size;
       n = 2*s/16777216
+      i = 0
       for ch in chunks (v, n):
-        coll1.insert ( { 'url': url, 'parent': id, 'values': ch } ) 
+        coll1.insert ( { 'chunk': i, 'url': url, 'parent': id, 'values': ch } )
+        i = i + 1 
