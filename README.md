@@ -77,18 +77,18 @@ that are effective for data gathering as in Project 2a is a rich
 topic for a final project.
 
 ```
-| Team | AWS VM       | Time | Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                                          |
-|------+--------------+------+---------+-------------+------+------+-----------------------------------------------------------------------------------|
-| T1   | t1.micro     |    5 |    .013 |          12 |  185 |    2 |                                                                                   |
-| T2   | t2.medium    | 14.2 |    .052 |         103 |  139 |    7 | Clones to 1Tb EBS magnetic volume/no rsync                                        |
-| T3   | m3.2xlarge   |   39 |    0.56 |         215 |   10 |    6 |                                                                                   |
-| T4   | c3.2xlargex3 |    1 |  0.42*3 |         307 |  244 |  307 | (no rsync) 3 instances and a total of 24 processes (8 per instance or 1 per core) |
-| T5   | r3.2xlarge   |   39 |     0.7 |         288 |   11 |    7 |                                                                                   |
-| T6   | i2.xlarge    |   24 |    0.85 |         130 |    6 |    5 |                                                                                   |
-| hg   | m3.large     |  3.6 |    0.14 |        24.9 |   49 |    7 | Pure retrieval no rsync                                                           |
-| git  | m3.large     |  2.5 |    0.14 |        22.3 |   64 |    9 | Pure retrieval no rsync                                                           |
-| hg   | t1.micro     | 4.19 |    .013 |        19.6 |  360 |    5 | Pure retrieval no rsync                                                           |
-| git  | t1.micro     | 2.25 |    .013 |        21.7 |  742 |   10 | Pure retrieval no rsync                                                           |
+| Team | AWS VM       | Time |        Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                               |
+|------+--------------+------+----------------+-------------+------+------+------------------------------------------------------------------------|
+| T1   | t1.micro     |    5 |           .013 |          12 |  185 |    2 |                                                                        |
+| T2   | t2.medium    | 40.8 |       .052+.07 |       281.5 |   57 |    7 | Clones to 1Tb EBS magnetic volume/no rsync                             |
+| T3   | m3.2xlarge   |   39 |           0.56 |         215 |   10 |    6 |                                                                        |
+| T4   | c3.2xlargex3 |  5.4 | 0.42*3+.05+.14 |      1039.9 |  133 |  193 | 3 instances and a total of 24 processes (8 per instance or 1 per core) |
+| T5   | r3.2xlarge   |   39 |            0.7 |         288 |   11 |    7 |                                                                        |
+| T6   | i2.xlarge    |   24 |           0.85 |         130 |    6 |    5 |                                                                        |
+| hg   | m3.large     |  3.6 |           0.14 |        24.9 |   49 |    7 | Pure retrieval no rsync                                                |
+| git  | m3.large     |  2.5 |           0.14 |        22.3 |   64 |    9 | Pure retrieval no rsync                                                |
+| hg   | t1.micro     | 4.19 |           .013 |        19.6 |  360 |    5 | Pure retrieval no rsync                                                |
+| git  | t1.micro     | 2.25 |           .013 |        21.7 |  742 |   10 | Pure retrieval no rsync                                                |
 ```
 Please email me corrected numbers, I copied these from the
 whiteboard. Also, if you have not done yet, please send me the architecture:
