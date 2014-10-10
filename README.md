@@ -54,6 +54,25 @@ PlayWithMongo.ipynb.
 For Project 2b, we will need to write and start scripts to populate data for 
 the following collections in database bitbucket:
 * commits, forks, watchers, and pullrequests.
+The scrips can run on the da VMs that can directly connect to MongoDB on da0
+To connect to mongodb from ealsewhere please use port forwarding:
+```
+ssh -L27017:da0.eecs.utk.edu:27017 -p 2200 -N da2.eecs.utk.edu 
+```
+To shorten your command line you can put the following into the computer's
+.ssh/config:
+```
+host davm0
+  hostname da2.eecs.utk.edu
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/micro
+  LocalForward 27017 da0.eecs.utk.edu:27017
+  port 2200
+```
+Then mongodb will be accecssible from that computer as 
+```
+client = pymongo.MongoClient (host="localhost")
+```
 
 Instructions for Project2c 
 --------------------------
