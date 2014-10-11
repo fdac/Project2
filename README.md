@@ -41,19 +41,19 @@ data. In particular, database 'bitbucket' has fully populated collection
 https://api.bitbucket.org/2.0/repositories/XXX/XXX
 ```
 
-Other collections: forks, watchers, and commits are not fully
+Other collections: forks and watchers are fully populated
+but commits and pullrequests are not fully
 populated at present. Your team will need to populate them for the
 projects your team is responsible for.
-An example script that populates the collection is gatherForks.py.
-Please replace the database iterator in it with a reader from file
-as in the cloning tasks.
+An example script that populates the collection is gatherForks1.py.
+
 
 Some examples of extracting data from MongoDB are given in
 PlayWithMongo.ipynb.
 
 For Project 2b, we will need to write and start scripts to populate data for 
 the following collections in database bitbucket:
-* commits, forks, watchers, and pullrequests.
+* commits and pullrequests.
 The scrips can run on the da VMs that can directly connect to MongoDB on da0
 To connect to mongodb from ealsewhere please use port forwarding:
 ```
