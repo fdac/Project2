@@ -98,8 +98,8 @@ topic for a final project.
 ```
 | Team | AWS VM       | Time |        Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                               |
 |------+--------------+------+----------------+-------------+------+------+------------------------------------------------------------------------|
-| T1   | t1.micro     |    5 |           .013 |          12 |  185 |    2 |                                                                        |
-| T2   | t2.medium    | 40.8 |       .052+.07 |       281.5 |   57 |    7 | Clones to 1Tb EBS magnetic volume/no rsync                             |
+| T1   | t1.micro     |  105 |           .013 |         600 |  440 |    6 | The remaining repos are cloned using 7 instances                       |
+| T2   | t2.medium    | 88.7 |       .052+.07 |         669 |   62 |    8 | Clones to 1Tb EBS magnetic volume/no rsync                             |
 | T3   | m3.2xlarge   |   39 |           0.56 |         215 |   10 |    6 |                                                                        |
 | T4   | c3.2xlargex3 |  5.4 | 0.42*3+.05+.14 |      1039.9 |  133 |  193 | 3 instances and a total of 24 processes (8 per instance or 1 per core) |
 | T5   | r3.2xlarge   |   39 |            0.7 |         288 |   11 |    7 |                                                                        |
