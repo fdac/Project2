@@ -96,19 +96,19 @@ that are effective for data gathering as in Project 2a is a rich
 topic for a final project.
 
 ```
-| Team | AWS VM       | Time |        Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                               |
-|------+--------------+------+----------------+-------------+------+------+------------------------------------------------------------------------|
-| T1   | t1.micro     |  105 |           .013 |         600 |  440 |    6 | The remaining repos are cloned using 7 instances                       |
-| T2   | t2.medium    | 88.7 |       .052+.07 |         669 |   62 |    8 | Clones to 1Tb EBS magnetic volume/no rsync                             |
-| T3   | m3.2xlarge   |   39 |           0.56 |         215 |   10 |    6 |                                                                        |
-| T4   | c3.2xlargex3 |  5.4 | 0.42*3+.05+.14 |      1039.9 |  133 |  193 | 3 instances and a total of 24 processes (8 per instance or 1 per core) |
-| T5   | r3.2xlarge   |   39 |            0.7 |         288 |   11 |    7 |                                                                        |
-| T6   | i2.xlarge    | 5.08 |           0.85 |          49 |   11 |   10 |                                                                        |
-| T6   | i2.xlarge    | 1.99 |           0.85 |          49 |   29 |   25 | clone only                                                             |
-| hg   | m3.large     |  3.6 |           0.14 |        24.9 |   49 |    7 | clone only                                                             |
-| git  | m3.large     |  2.5 |           0.14 |        22.3 |   64 |    9 | clone only                                                             |
-| hg   | t1.micro     | 4.19 |           .013 |        19.6 |  360 |    5 | clone only                                                             |
-| git  | t1.micro     | 2.25 |           .013 |        21.7 |  742 |   10 | clone only                                                             |
+| Team | AWS VM       |  Time |        Cost/Hr | Gb retrived | Gb/$ | Gb/h | Comments                                                               |
+|------+--------------+-------+----------------+-------------+------+------+------------------------------------------------------------------------|
+| T1   | t1.micro     |   105 |           .013 |         600 |  440 |    6 | The remaining repos are cloned using 7 instances                       |
+| T2   | t2.medium    | 111.5 |       .052+.07 |         808 |   59 |    7 | Clones to 1Tb EBS magnetic volume/no rsync                             |
+| T3   | m3.2xlarge   |    39 |           0.56 |         215 |   10 |    6 |                                                                        |
+| T4   | c3.2xlargex3 |   5.4 | 0.42*3+.05+.14 |      1039.9 |  133 |  193 | 3 instances and a total of 24 processes (8 per instance or 1 per core) |
+| T5   | r3.2xlarge   |    39 |            0.7 |         288 |   11 |    7 |                                                                        |
+| T6   | i2.xlarge    |  5.08 |           0.85 |          49 |   11 |   10 |                                                                        |
+| T6   | i2.xlarge    |  1.99 |           0.85 |          49 |   29 |   25 | clone only                                                             |
+| hg   | m3.large     |   3.6 |           0.14 |        24.9 |   49 |    7 | clone only                                                             |
+| git  | m3.large     |   2.5 |           0.14 |        22.3 |   64 |    9 | clone only                                                             |
+| hg   | t1.micro     |  4.19 |           .013 |        19.6 |  360 |    5 | clone only                                                             |
+| git  | t1.micro     |  2.25 |           .013 |        21.7 |  742 |   10 | clone only                                                             |
 ```
 Please email me corrected numbers, I copied these from the
 whiteboard. Also, if you have not done yet, please send me the architecture:
@@ -120,7 +120,7 @@ For example, the data cloning architectures for Team3-2, Team4-2, and Team5-2 ar
 ![Retrieval architecture for Team3-2](https://github.com/fdac/Project2/blob/master/T3Arch.png "T3 Architecture")
 ![Retrieval architecture for Team4-2](https://github.com/fdac/Project2/blob/master/T4Arch.png "T4 Architecture")
 ![Retrieval architecture for Team5-2](https://github.com/fdac/Project2/blob/master/T5Arch.png "T5 Architecture")
-
+![Retrieval architecture for Team6-2](https://github.com/fdac/Project2/blob/master/T6Arch.pdf "T6 Architecture")
 
 ###Difficulties Encountered:
 1. Various ssh key authentication issues, including, for rsync: see
