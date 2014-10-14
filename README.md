@@ -115,12 +115,13 @@ whiteboard. Also, if you have not done yet, please send me the architecture:
 e.g., threads to clone, threads to sync and any special disk/network 
 setup, etc.
 
-For example, the data cloning architectures for Team3-2, Team4-2, and Team5-2 are below:
+For example, the data cloning architectures for Team3-2, Team4-2,
+Team5-2, and Team6-2 are below:
 
 ![Retrieval architecture for Team3-2](https://github.com/fdac/Project2/blob/master/T3Arch.png "T3 Architecture")
 ![Retrieval architecture for Team4-2](https://github.com/fdac/Project2/blob/master/T4Arch.png "T4 Architecture")
 ![Retrieval architecture for Team5-2](https://github.com/fdac/Project2/blob/master/T5Arch.png "T5 Architecture")
-![Retrieval architecture for Team6-2](https://github.com/fdac/Project2/blob/master/T6Arch.pdf "T6 Architecture")
+![Retrieval architecture for Team6-2](https://github.com/fdac/Project2/blob/master/T6Arch.png "T6 Architecture")
 
 ###Difficulties Encountered:
 1. Various ssh key authentication issues, including, for rsync: see
