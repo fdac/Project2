@@ -129,7 +129,9 @@ Team5-2, and Team6-2 are below:
 1. Some repos require password while cloning. Redirecting standard
    input does not appear to work. The following script (put it in
    file 'run' and run via 'expect run > ~/statsHg 2> ~/statsHg.err'. Install 'expect' command via
-   "sudo apt-get install expect")
+   "sudo apt-get install expect"). Many of repos for Team 6 keep
+   asking "user:" "password:" sequence indefinitely. Sending Ctrl-D
+   takes care of that. 
 
  ```
  #!/usr/bin/expect
@@ -142,6 +144,14 @@ Team5-2, and Team6-2 are below:
     } 
     "Password for 'https://bitbucket.org':" {
         send "\r"
+        exp_continue
+    }
+    "user:" {
+        send "\003"
+        exp_continue
+    }
+    "password:" {
+        send "\003"
         exp_continue
     }
  }
