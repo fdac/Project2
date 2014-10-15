@@ -151,11 +151,11 @@ Team5-2, and Team6-2 are below:
         exp_continue
     }
     "user:" {
-        send "\003"
+        send "\004"
         exp_continue
     }
     "password:" {
-        send "\003"
+        send "\004"
         exp_continue
     }
  }
