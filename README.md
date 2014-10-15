@@ -81,6 +81,8 @@ projects and, in order to get some ideas on how to measure that,
 please read the following opinion pieces:
 * [How to join a project](https://opensource.com/business/14/9/jump-into-open-source-project)
 * [Ways to contribute](http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/)
+Here is a  summary chart (provided by auxiliary):
+![A summary chart](https://github.com/fdac/Project2/blob/master/OSS.png "Participating in OSS")
 
 
 Project2a
@@ -131,7 +133,9 @@ Team5-2, and Team6-2 are below:
    file 'run' and run via 'expect run > ~/statsHg 2> ~/statsHg.err'. Install 'expect' command via
    "sudo apt-get install expect"). Many of repos for Team 6 keep
    asking "user:" "password:" sequence indefinitely. Sending Ctrl-D
-   takes care of that. 
+   takes care of that. Team3 has used BB API to check if the
+   repository is private just before the cloning and report that
+   to work well.
 
  ```
  #!/usr/bin/expect
