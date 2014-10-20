@@ -1,3 +1,52 @@
+Instructions for Project2c 
+--------------------------
+We will focus on identifying likely-to-be-popular-in-the-future
+projects and, in order to get some ideas on how to measure that, 
+please read the following opinion pieces:
+* [How to join a project](https://opensource.com/business/14/9/jump-into-open-source-project)
+* [Ways to contribute](http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/)
+
+Here is a  summary chart (provided by auxiliary):
+![A summary chart](https://github.com/fdac/Project2/blob/master/OSS.png "Participating in OSS")
+
+On github we can count followers:
+```
+import pymongo
+client = pymongo.MongoClient (host="da0.eecs.utk.edu")
+db = client ['test']
+coll = db ['followers']
+fws = {}
+for r in coll .find ({}, { "login" : 1, "follows":1,"_id":0 } ):  
+  l, f = (r ["login"], r ["follows"])
+  if f in fws:
+    fws [f] .add (l)
+  else:
+    fws [f] = { l }
+
+fwsC = []
+for f in fws:
+   fwsC .append ((f, len (fws[f])))
+srt = sorted (fwsC, key = lambda x : x[1], reverse=True)[0:10]
+for f in srt:
+  print f[0] + ' has ' + str (f[1]) + " followers" 
+
+torvalds has 18884 followers
+paulirish has 12194 followers
+visionmedia has 10785 followers
+schacon has 10565 followers
+mojombo has 9833 followers
+defunkt has 8919 followers
+pjhyett has 8584 followers
+ryanb has 6167 followers
+wycats has 5603 followers
+mattt has 5379 followers
+```
+
+Similarly on bitbucket we can do the same (once the collection followers is 
+populated)
+
+
+
 Instructions for Project2b 
 --------------------------
 
@@ -74,15 +123,6 @@ Then mongodb will be accecssible from that computer as
 client = pymongo.MongoClient (host="localhost")
 ```
 
-Instructions for Project2c 
---------------------------
-We will focus on identifying likely-to-be-popular-in-the-future
-projects and, in order to get some ideas on how to measure that, 
-please read the following opinion pieces:
-* [How to join a project](https://opensource.com/business/14/9/jump-into-open-source-project)
-* [Ways to contribute](http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/)
-Here is a  summary chart (provided by auxiliary):
-![A summary chart](https://github.com/fdac/Project2/blob/master/OSS.png "Participating in OSS")
 
 
 Project2a
