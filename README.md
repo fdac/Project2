@@ -123,6 +123,20 @@ Then mongodb will be accecssible from that computer as
 client = pymongo.MongoClient (host="localhost")
 ```
 
+## A direct way to extract commits
+You can modify the following scripts to extract commits a bit faster than via
+BB REST API
+```
+cat YOUR_HG_REPOS | while read i
+do j=$(echo $i| sed 's"/"_"')
+   hg log -v --style ~audris/bin/multiline1 bitbucket.org_$j | gzip > bitbucket.org_$j.log.gz
+done
+
+cat YOUR_GIT_REPOS | while read i
+git --git-dir=$i log --numstat -M -C --diff-filter=ACMR --full-history \
+ --pretty=tformat:"STARTOFTHECOMMIT%n%H;%T;%P;%an;%ae;%at;%cn;%ce;%ct;%s" \
+ | perl ~audris/bin/extrgit.perl | gzip > $i.delta.gz
+```
 
 
 Project2a
