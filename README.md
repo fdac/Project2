@@ -1,4 +1,4 @@
-Instructions for Project2c 
+ Instructions for Project2c 
 --------------------------
 We will focus on identifying likely-to-be-popular-in-the-future
 projects and, in order to get some ideas on how to measure that, 
@@ -30,6 +30,7 @@ srt = sorted (fwsC, key = lambda x : x[1], reverse=True)[0:10]
 for f in srt:
   print f[0] + ' has ' + str (f[1]) + " followers" 
 
+Output:
 torvalds has 18884 followers
 paulirish has 12194 followers
 visionmedia has 10785 followers
@@ -67,7 +68,24 @@ for f in fws:
 srt = sorted (fwsC, key = lambda x: x[1], reverse=True)[0:10]
 for f in srt:
   print f[0] + ' has ' + str (f[1]) + " followers" 
+
+Output:
+ubernostrum has 398 followers
+sjl has 326 followers
+ianb has 270 followers
+mitsuhiko has 253 followers
+jespern has 240 followers
+dhellmann has 182 followers
+jezdez has 158 followers
+homakov has 151 followers
+BruceEckel has 137 followers
+geckofx has 118 followers
+
 ```
+It appears that .2M users of BB (vs 9.5M for GH)
+can provide at most .4K followers (vs 20K for GH), or
+a maximum of 2 followers per K users in BB (vs maximum of
+2 followers per K users in GH). Hmm... Should this law be named?
 
 
 Instructions for Project2b 
