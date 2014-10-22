@@ -82,11 +82,23 @@ BruceEckel has 137 followers
 geckofx has 118 followers
 
 ```
+## The law of Follower
 It appears that .2M users of BB (vs 9.5M for GH)
 can provide at most .4K followers (vs 20K for GH), or
 a maximum of 2 followers per K users in BB (vs maximum of
 2 followers per K users in GH). Hmm... Should this law be named?
 
+Note that while there are  only 193K users with repos, the following 
+recursive script finds almost double that number (getUsers.sh)
+```
+python watchersToUsers.py | sort -u > wch.u
+python followersToUsers.py | sort -u > fw.u
+python followingToUsers.py | sort -u > fwg.u
+python eventsToUsers.py | sort -u > evt.u 
+cat fw.done wch.u fw.u fwg.u evt.u | sort -u > all.u
+join -v1 -t\; all.u fw.done > followers.todo
+python gatherFw.py >> fw.out 2>> fw.err &
+```
 
 Instructions for Project2b 
 --------------------------
@@ -145,9 +157,11 @@ For Project 2b, we will need to write and start scripts to populate data for
 the following collections in database bitbucket:
 * commits and pullrequests.
 The scrips can run on the da VMs that can directly connect to MongoDB on da0
+
+
 To connect to mongodb from ealsewhere please use port forwarding:
 ```
-ssh -L27017:da0.eecs.utk.edu:27017 -p 2200 -N da2.eecs.utk.edu 
+ssh -L27017:da0.eecs.utk.edu:27017 -p 2200 -N YourNetId@da2.eecs.utk.edu 
 ```
 To shorten your command line you can put the following into the computer's
 .ssh/config:
@@ -163,6 +177,9 @@ Then mongodb will be accecssible from that computer as
 ```
 client = pymongo.MongoClient (host="localhost")
 ```
+
+If you want to run ipython on the da vms, don't forget to 
+forward the port 8888 to the right vm! 
 
 ## A direct way to extract commits
 You can modify the following scripts to extract commits a bit faster than via
