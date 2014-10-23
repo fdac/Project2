@@ -26,7 +26,7 @@ for l in f:
   s = n2s [ n ]
   vcs = ar [1]
   if (t == 1):
-    cmdl = 'hg clone -H https://bitbucket.org/' + n + ' ' + p
+    cmdl = 'hg clone -U https://bitbucket.org/' + n + ' ' + p
     if vcs == 'git':
        continue 
     if (nused + s > DiskCapacity):
