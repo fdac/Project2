@@ -1,7 +1,30 @@
  Instructions for Project2c 
 --------------------------
 
-##For Oct 25 think of a measure of influence based on the data in MongoDB.
+##For Oct 24 think of a measure of influence based on the data in MongoDB.
+Photo of the witeboard with several ideas:
+![WB](https://github.com/fdac/Project2/blob/master/WB.jpg "Measures of Influence")
+
+T4 prepared the following list:
+Influence of a user in a project:
+- # commits in a project
+- amount of code added to a project(s)
+
+Influence of a user:
+- # of projects part of
+- # of quality projects part of (define quality)
+- # of non-owner projects working on
+- # of followers
+- # of connections (followers or following)
+- # of implemented pull requests
+
+Influence of a project:
+- # of forks
+- # of pull requests
+- # of unique commiters
+- # of projects that depend on a project (define dependency)
+- # of clones
+
 
 
 We will focus on identifying likely-to-be-popular-in-the-future
