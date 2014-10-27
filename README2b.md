@@ -1,3 +1,12 @@
+Where the measures are right now
+---------------------------
+- Repository descriptions (repo), "followers", "forks", "pullrequests", "watchers"
+are collections in mongodb (database 'bitbucket')
+- All repos are in ~audris/bitbucket.org\_USER\_REPO
+- Commits are in ~audris/delta/bitbucket.org\_USER\_REPO.delta.gz
+  (auxiliary and markdcarrigan kindly agreed to import that data as collection delta into mongodb)
+  The script used to extract commits from repositories is in fdac/Project2/deltaAny.py)
+
 Instructions for Project2b 
 --------------------------
 
