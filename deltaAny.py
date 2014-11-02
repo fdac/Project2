@@ -33,9 +33,9 @@ for l in f:
      continue
   n = p2n [ p ]
   vcs = n2v [ n ]
-  cmdl = '/usr/bin/hg log -v --style ~audris/bin/multiline1 bb/' + p + ' | /usr/bin/gzip > delta/' + p + '.delta.gz'
+  cmdl = 'hg log -v --style ~audris/bin/multiline1 bb/' + p + ' | gzip > delta/' + p + '.delta.gz'
   if vcs == 'git':
-    cmdl = '/usr/bin/git --git-dir=bb/' + p + ' log --numstat -M -C --diff-filter=ACMR --full-history --pretty=tformat:"STARTOFTHECOMMIT%n%H;%T;%P;%an;%ae;%at;%cn;%ce;%ct;%s" | /usr/bin/perl ~audris/bin/extrgit.perl | /usr/bin/gzip > delta/' + p + '.delta.gz'
+    cmdl = 'git --git-dir=bb/' + p + ' log --numstat -M -C --diff-filter=ACMR --full-history --pretty=tformat:"STARTOFTHECOMMIT%n%H;%T;%P;%an;%ae;%at;%cn;%ce;%ct;%s" | /usr/bin/perl ~audris/bin/extrgit.perl | gzip > delta/' + p + '.delta.gz'
   r = subprocess.call (cmdl, shell=True)
   ttt = time .time()
   print str (r) + ';' + str (ttt-start) + ';' + cmdl

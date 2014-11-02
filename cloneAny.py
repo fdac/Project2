@@ -9,7 +9,12 @@ for l in f:
   vcs = ar [1]
   s = int (ar [0])
   n = ar [5]
-  p = re. sub('/', '_', n)
+  if re.search ("/\.$", n):
+	p = re. sub('/', '_', n)
+	p = 'bitbucket.org_' + p
+	print p + ':' + n + ':'
+  else:
+    p = 'bitbucket.org_' + re. sub('/', '_', n)
   p2n [ p ] = n
   n2s [ n ] = s
   n2v [ n ] = vcs
@@ -24,6 +29,7 @@ f = open (fname)
 toCopy = []
 for l in f: 
   p = l .rstrip ()
+  print p + ':'
   n = p2n [ p ]
   s = n2s [ n ]
   vcs = n2v [ n ]

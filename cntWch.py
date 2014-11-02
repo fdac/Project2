@@ -29,7 +29,7 @@ for r in coll .find ({}, { "url" : 1, "values":1,"_id":0 } ):
 coll = db ['forks']
 for r in coll .find ({}, { "url" : 1, "values":1,"_id":0 } ):
   u, v = (r ["url"], r ["values"])
-  l = u .replace ("https://bitbucket.org/api/2.0/repositories/","").replace("/forks","")
+  l = u .replace ("https://api.bitbucket.org/2.0/repositories/","").replace("/forks","")
   all [l] = 1
   if l not in frks: frks[l] = set ()
   for i in v:

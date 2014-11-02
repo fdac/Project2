@@ -9,6 +9,7 @@ def parse(text, name):
     if text == '':
         return (data, 0)
     last_revision = ''
+    text .replace ('\r', '')
     # Determine if it uses Git
     if text.find('ENDOFCOMMENT') > 0 and text[:text.find(';')].find(':') > 0:
         # It's Mercurial
@@ -83,7 +84,7 @@ def decode(text):
     return str(text).encode('string_escape')
 
 if __name__ == '__main__':
-    delta_dir = '/home/audris/delta/'
+    delta_dir = 'delta/'
     client = pymongo.MongoClient(host="da0.eecs.utk.edu")
     db = client['bitbucket']
     deltas = db['deltas']
@@ -112,5 +113,6 @@ if __name__ == '__main__':
         	sys.stdout.flush()
         	counter += 1
 	except Exception as e:
+		print 'error'
 		sys.stderr.write (filename + " could not store\n")	
     
