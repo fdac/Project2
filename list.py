@@ -11,6 +11,9 @@ db = client ['bitbucket']
 coll = db ['repos']
 
 
-for r in coll .find ({}, { "full_name" : 1 } ):  
-  url = r ["full_name"]
-  print url
+for r in coll .find ({}, { "full_name" : 1 } ):
+  if "full_name" in r:  
+     url = r ["full_name"]
+     print url
+  else:
+     sys.stderr.write ("No name " + r ["_id"])

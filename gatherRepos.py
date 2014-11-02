@@ -3,18 +3,13 @@ import requests
 
 
 jsonDict = {}
-
 client = pymongo.MongoClient (host="da0.eecs.utk.edu")
 # Get a reference to a particular database
 db = client ['bitbucket']
-# Reference a particular collection in the database
-coll = db ['repos']
 
 
 #do for forks, watchers, commits, clone, pullrequests
-collName = 'forks'
-if (len (sys .argv) > 1):
-  collName = sys .argv [1]
+collName = 'uToRepo'
 
 def chunks(l, n):
   if n < 1: n = 1
@@ -24,13 +19,7 @@ f = open (collName + '.todo')
 coll1 = db [collName]
 for n in f:    
   n = n .rstrip ()
-  r = coll .find_one ({ "full_name" : n },  { "links" : 1 })
-  if r is None:
-     sys.stderr.write (n + " not found\n")
-     print ";;https://api.bitbucket.org/2.0/repositories/" + n + "/ not found"
-     continue
-  id = r ['_id']
-  url = r ['links'][collName]['href']
+  url = "https://bitbucket.org/api/2.0/repositories/" + n 
   url1 = url + "/?pagelen=100"
   v = []
   size = 0
@@ -51,18 +40,19 @@ for n in f:
       print str (len (v)) + ';' + str (size) + ';' + url1
       sys .stdout .flush ()
     except Exception as e:
-      sys.stderr.write ("\nCould not get:")
-      sys.stderr.write ( url )
-      sys.stderr.write ( e )
+      print "Could not get:" 
+      print url
+      print e
+      sys .stdout .flush ()
       break
   if len (v) > 0:
     # size may be bigger in bson, factor of 2 doesnot always suffice    
     if (size < 16777216/3):
-      coll1.insert ( { 'url': url, 'parent': id, 'values': v } )
+      coll1.insert ( { 'url': url, 'values': v } )
     else:
       s = size;
       n = 3*s/16777216
       i = 0
       for ch in chunks (v, n):
-        coll1.insert ( { 'chunk': i, 'url': url, 'parent': id, 'values': ch } )
+        coll1.insert ( { 'chunk': i, 'url': url, 'values': ch } )
         i = i + 1 

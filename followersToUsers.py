@@ -13,4 +13,4 @@ for r in coll .find ({}, { "url":1, "values" : 1, "_id":0 } ):
     fws .add (f)
 
 for f in fws:
-  print f 
+  print f .encode("utf-8") 
