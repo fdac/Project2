@@ -1,8 +1,28 @@
  Instructions for Project2c 
 --------------------------
 
+To finish Project2 (and Project2c)
+---------------------------------
+- calculate a measure of your choice
+- fit a model that explains or uses that measure (as in the example)
+
+
+Example
+=======
+fdac/Project2/Measures-R.ipynb
+
+It uses data from file prepR.r.
+
+How was prepR.r was generated?
+```
+python measures.py > measures.out
+python cntWch.py > cntWch.out
+python cntFlws.py > cntFlws.out
+python prepR.py > prepR.r
+```
+
 ##For Oct 24 think of a measure of influence based on the data in MongoDB.
-Photo of the witeboard with several ideas:
+Photo of the whiteboard with several ideas:
 ![WB](https://github.com/fdac/Project2/blob/master/WB.jpg "Measures of Influence")
 
 T4 prepared the following list:
