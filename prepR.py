@@ -1,11 +1,6 @@
-import re,  pymongo
 import time
 from datetime import datetime
 from dateutil.parser import parse
-
-def decode(text):
-  return str(text).encode('string_escape')
-
 
 rstats = {}
 ustats = {}
@@ -25,15 +20,15 @@ if __name__ == '__main__':
   us = open('cntFlws.out', 'r').readlines()
   for u in us:
     u = u.strip()
-    n, nFl, flws = u.split(';')
-    ustats [n] = nFl
+    n, nFl, nFd, flws, fwd = u.split(';')
+    ustats [n] = (nFl, nFd)
   repos = open('cntWch.out', 'r').readlines()
   for repo in repos:
     repo = repo.strip()
     n, nW, nFr, nPu, w, f, p = repo.split(';')
     n = n .replace('/', '_')
     stats [n] = (nW, nFr, nPu)
-  print "repo;nW;nFr;nPu;nDe;nAu;nFi;vcs;Siz;from;to;u;nFl";
+  print "repo;nW;nFr;nPu;nDe;nAu;nFi;vcs;Siz;from;to;u;nFl;nFd";
   repos = open('measures.out', 'r').readlines()
   for repo in repos:
     repo = repo.strip()
@@ -44,8 +39,8 @@ if __name__ == '__main__':
     if n in stats:
        nW, nFr, nPu = stats [n]
     vcs, Siz, fr, to, u = rstats [n]
-    nFl = "0"
+    nFl, nFd = ("0", "0")
     if u in ustats:
-      nFl = ustats [u]
-    res = (n, nW, nFr, nPu, nDe, nAu, nFi, vcs, Siz, fr, to, u, nFl)
+      nFl, nFd = ustats [u]
+    res = (n, nW, nFr, nPu, nDe, nAu, nFi, vcs, Siz, fr, to, u, nFl, nFd)
     print ';' .join (res)
