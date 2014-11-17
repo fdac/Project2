@@ -1,2 +1,2 @@
 #!/bin/bash
-ipython notebook --KernelManager.kernel_cmd="['R', '-e', 'IRkernel::main()', '--args', '{connection_file}']" --ip='*' --no-browser
+ipython notebook --KernelManager.kernel_cmd="['R', '-e', 'IRkernel::main()', '--args', '{connection_file}']"  --no-browser
